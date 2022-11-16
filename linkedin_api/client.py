@@ -155,6 +155,7 @@ class Client(object):
             headers=Client.AUTH_REQUEST_HEADERS,
             proxies=self.proxies,
         )
+        print(res.request)
 
         data = res.json()
 
