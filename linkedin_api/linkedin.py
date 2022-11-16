@@ -224,7 +224,7 @@ class Linkedin(object):
             default_params.update(params)
 
             res = self._fetch(
-                f"/search/blended?{urlencode(default_params, safe='(),')}",
+                f"/search/blended?{urlencode(default_params, safe='(),', quote_via=quote)}",
                 headers={"accept": "application/vnd.linkedin.normalized+json+2.1"},
             )
             data = res.json()
@@ -512,7 +512,7 @@ class Linkedin(object):
             default_params.update(params)
 
             res = self._fetch(
-                f"/search/hits?{urlencode(default_params, safe='(),')}",
+                f"/search/hits?{urlencode(default_params, safe='(),', quote_via=quote)}",
                 headers={"accept": "application/vnd.linkedin.normalized+json+2.1"},
             )
             data = res.json()
@@ -852,7 +852,7 @@ class Linkedin(object):
             "universalName": public_id,
         }
 
-        res = self._fetch(f"/organization/companies?{urlencode(params)}")
+        res = self._fetch(f"/organization/companies?{urlencode(params, quote_via=quote)}")
 
         data = res.json()
 
